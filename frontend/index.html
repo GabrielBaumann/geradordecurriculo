@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo Rápido - Crie em 3 minutos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10B981',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Header para todos os dispositivos -->
+    <header class="bg-white shadow-sm py-4 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-2xl font-bold text-gray-800 text-center">Faça seu currículo rápido</h1>
+            <p class="text-gray-600 text-center text-sm mt-1">Leva só 3 minutinhos...</p>
+        </div>
+    </header>
+
+    <!-- Progresso fixo no topo -->
+    <div class="sticky top-0 bg-white z-10 shadow-sm">
+        <div class="max-w-4xl mx-auto px-6 py-3">
+            <div class="flex justify-between items-center mb-2">
+                <div class="flex-1 flex justify-center">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 bg-primary text-white">1</div>
+                </div>
+                <div class="flex-1 flex justify-center">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 bg-gray-200 text-gray-600">2</div>
+                </div>
+                <div class="flex-1 flex justify-center">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 bg-gray-200 text-gray-600">3</div>
+                </div>
+                <div class="flex-1 flex justify-center">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 bg-gray-200 text-gray-600">4</div>
+                </div>
+            </div>
+            <div class="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                <div class="h-full bg-primary transition-all duration-300" style="width: 25%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulário principal -->
+    <main class="flex-1 py-6 px-4 max-w-4xl mx-auto w-full">
+        <form id="resumeForm" class="space-y-6">
+            <!-- Seção 1: Informações básicas -->
+            <section class="form-section bg-white rounded-xl shadow-sm p-6 active" data-section="1">
+                <h2 class="text-xl font-semibold text-gray-800 text-center mb-6">Escreva suas informações básicas</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-1">Nome Completo</label>
+                        <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-1">Profissão/Cargo</label>
+                        <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-1">E-mail</label>
+                        <input type="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-1">Telefone</label>
+                        <input type="tel" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <button type="button" class="w-full bg-primary hover:bg-emerald-600 text-white font-medium py-3 px-6 rounded-full transition duration-300 flex items-center justify-center" data-next="2">
+                        Continuar <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Seção 2: Experiência -->
+            <section class="form-section bg-white rounded-xl shadow-sm p-6 hidden" data-section="2">
+                <h2 class="text-xl font-semibold text-gray-800 text-center mb-6">Conte sobre suas experiências</h2>
+                
+                <div id="experiencias" class="space-y-4">
+                    <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-primary">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="font-medium text-gray-800">Experiência Profissional</h3>
+                            <button type="button" class="text-gray-400 hover:text-red-500 transition" onclick="removeExperiencia(this)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 text-sm font-medium mb-1">Empresa</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 text-sm font-medium mb-1">Cargo</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 text-sm font-medium mb-1">Descrição</label>
+                                <textarea class="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" rows="3" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <button type="button" class="w-full border border-primary text-primary hover:bg-gray-50 font-medium py-3 px-6 rounded-full transition duration-300 flex items-center justify-center" onclick="addExperiencia()">
+                        <i class="fas fa-plus mr-2"></i> Adicionar Experiência
+                    </button>
+                </div>
+                
+                <div class="mt-6 flex justify-between space-x-4">
+                    <button type="button" class="flex-1 border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium py-3 px-6 rounded-full transition duration-300 flex items-center justify-center" data-prev="1">
+                        <i class="fas fa-arrow-left mr-2"></i> Voltar
+                    </button>
+                    <button type="button" class="flex-1 bg-primary hover:bg-emerald-600 text-white font-medium py-3 px-6 rounded-full transition duration-300 flex items-center justify-center" data-next="3">
+                        Continuar <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Seção 3: Formação -->
+            <section class="form-section bg-white rounded-xl shadow-sm p-6 hidden" data-section="3">
+                <h2 class="text-xl font-semibold text-gray-800 text-center mb-6">Fale sobre sua formação</h2>
+                
+                <div id="formacoes" class="space-y-4">
+                    <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-primary">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="font-medium text-gray-800">Formação Acadêmica</h3>
+                            <button type="button" class="text-gray-400 hover:text-red-500 transition" onclick="removeFormacao(this)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 text-sm font-medium mb-1">Instituição</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-full border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 text-sm font-medium mb-1">Curso/Nível</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-full border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <button type="button" class="w-full border border-primary text-primary hover:bg-gray-50 font-medium py-3 px-6 rounded-full transition duration-300 flex items-center justify-center" onclick="addFormacao()">
+                        <i class="fas fa-plus mr-2"></i> Adicionar Formação
+                    </button>
+                </div>
+                
+                <div class="mt-6 flex justify-between space-x-4">
+                    <button type="button" class="flex-1 border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium py-3 px-6 rounded-full transition duration-300 flex items-center justify-center" data-prev="2">
+                        <i class="fas fa-arrow-left mr-2"></i> Voltar
+                    </button>
+                    <button type="button" class="flex-1 bg-primary hover:bg-emerald-600 text-white font-medium py-3 px-6 rounded-full transition duration-300 flex items-center justify-center" data-next="4">
+                        Continuar <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Seção 4: Habilidades -->
+            <section class="form-section bg-white rounded-xl shadow-sm p-6 hidden" data-section="4">
+                <h2 class="text-xl font-semibold text-gray-800 text-center mb-6">Destaque suas habilidades</h2>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-medium text-gray-800 mb-3">Habilidades Técnicas</h3>
+                        
+                        <div id="habilidades-tecnicas" class="space-y-3">
+                            <div class="flex items-center space-x-2">
+                                <input type="text" class="flex-1 px-4 py-3 rounded-full border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Ex: JavaScript">
+                                <button type="button" class="text-gray-400 hover:text-red-500 transition" onclick="removeSkill(this)">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="mt-3 w-full border border-primary text-primary hover:bg-gray-50 font-medium py-3 px-6 rounded-full transition duration-300 flex items-center justify-center" onclick="addTechnicalSkill()">
+                            <i class="fas fa-plus mr-2"></i> Adicionar Habilidade
+                        </button>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium text-gray-800 mb-3">Idiomas</h3>
+                        
+                        <div id="idiomas-container" class="space-y-3">
+                            <div class="flex items-center space-x-2">
+                                <input type="text" class="flex-1 px-4 py-3 rounded-full border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Ex: Inglês">
+                                <button type="button" class="text-gray-400 hover:text-red-500 transition" onclick="removeLanguage(this)">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="mt-3 w-full border border-primary text-primary hover:bg-gray-50 font-medium py-3 px-6 rounded-full transition duration-300 flex items-center justify-center" onclick="addLanguage()">
+                            <i class="fas fa-plus mr-2"></i> Adicionar Idioma
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex justify-between">
+                    <button type="button" class="border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium py-3 px-6 rounded-full transition duration-300 flex items-center justify-center" data-prev="3">
+                        <i class="fas fa-arrow-left mr-2"></i> Voltar
+                    </button>
+                    <button type="submit" class="bg-primary hover:bg-emerald-600 text-white font-medium py-3 px-6 rounded-full transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-file-pdf mr-2"></i> Gerar Currículo
+                    </button>
+                </div>
+            </section>
+        </form>
+    </main>
+
+    <!-- Modal de Loading -->
+    <div id="loadingModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-6 max-w-sm w-full mx-4 text-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+            <h3 class="text-lg font-medium text-gray-800 mb-2">Gerando seu currículo</h3>
+            <p class="text-gray-600">Por favor, aguarde enquanto preparamos seu documento.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
